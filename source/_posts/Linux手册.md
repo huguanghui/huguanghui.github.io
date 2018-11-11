@@ -13,3 +13,10 @@ tags:
 ## 常用链接
 
 [Linux手册文档](https://linuxtools-rst.readthedocs.io/zh_CN/latest/)
+
+## 应用
+
+### 查看linux中程序依赖的库
+
+使用ldd命令查看运行所依赖的库
+ldd + 程序
