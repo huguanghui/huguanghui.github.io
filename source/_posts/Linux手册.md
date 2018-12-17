@@ -20,3 +20,10 @@ tags:
 
 使用ldd命令查看运行所依赖的库
 ldd + 程序
+
+### netstat
+
+### xz和tar压缩
+
+压缩xz格式比7z还要小
+
