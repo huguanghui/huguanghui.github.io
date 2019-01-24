@@ -24,11 +24,57 @@ tags:
 
 大数据开发
 
+### 源码安装Go
+
+在树莓派上编译Go源码，查看编译完成后占用的大小
+
+1. 获取源码
+
+2. 编译源码
+
+   由两个Go的编译工具链,一个是gc,另一个是gccgo.
+
+   Go编译器支持8种指令集.
+
+3. 运行Demo
+
+### linux和Mac环境部署
+
+go的root包存放目录 /usr/local
+
+在/etc/profile种添加PATH,GOROOT,GOPATH路径指定
+
+```go
+
+export PATH=$PATH:/usr/loca/go/bin
+
+export GOROOT=$(go env GOROOT)
+
+export GOPATH=$(go env GOPATH)
+
+export PATH=$PATH:$GOPATH/bin
+
+```
+
+
+
 ### go之旅
 
 go官网上的一个Go编程指引功能
 
 ### 如何去写Go代码
+
+#### 编译类型
+
+取消调试信息
+
+go build -ldflags "-w" prog.go
+
+go编译器生成的代码包含内联函数调用和注册变量
+
+在调试的时候需要关掉它们
+
+go build -gcflags "-N -l"
 
 ### 编辑器和IDE工具
 

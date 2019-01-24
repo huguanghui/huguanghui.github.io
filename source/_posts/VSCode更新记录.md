@@ -10,6 +10,30 @@ tags:
 
 # VSCode
 
+## VSCode使用
+
+### cmd中文乱码
+
+暂时解决的办法:
+
+chcp 65001
+
+通过配置解决
+
+打开“文件”--“首选项”--“用户设置”，然后在setting.json中设置：
+
+terminal.integrated.shellArgs.windows
+
+```json
+{
+    "editor.fontSize": 18,
+    "terminal.integrated.shellArgs.windows": ["/K chcp 65001 >nul"],
+    "terminal.integrated.fontFamily": "Lucida Console",
+}
+```
+
+
+
 ## VSCode更新日志
 
 ### 10月版本
