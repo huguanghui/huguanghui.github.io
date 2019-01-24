@@ -1,10 +1,13 @@
 ---
-title: VScode使用之C/C++调试
-date: 2018-05-21 22:55:10
-categories:VSCode
-tags:VS调试
+title: VScode使用之C-C-调试
+reward: true
+date: 2018-11-11 09:47:55
+description:
+categories:
+- VScode
+tags:
+- 软件
 ---
-
 
 ## 安装流程
 

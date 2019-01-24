@@ -1,3 +1,13 @@
+---
+title: linux上samba服务安装
+reward: true
+date: 2018-11-11 09:47:55
+description:
+categories:
+- samba
+tags:
+- 软件
+---
 [TOC]
 
 ---
