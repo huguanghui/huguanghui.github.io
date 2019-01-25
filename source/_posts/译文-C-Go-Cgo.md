@@ -4,8 +4,9 @@ reward: true
 date: 2019-01-01 21:03:17
 description:
 categories:
+- 文档
 tags:
-- 译文
+- Go语言
 ---
 
 # C?Go?Cgo
