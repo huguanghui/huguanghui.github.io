@@ -1,11 +1,14 @@
 ---
 title: MFC工程创建
-date: 2018-04-20 20:47:33
 categories:
-- Windows应用
+  - Windows
 tags:
-- VS2017
-- MFC
+  - 软件
+reward: true
+originContent: "## SDK应用程序和MFC应用程序的对比\n### SDK应用程序的运行流程\n\tWinMain => 初始化WNDCLASSEX => 调用RegisterClassEx函数注册窗口类 =>调用ShowWindow和UpdateWindow函数显示并更新窗口 => 进入消息循环<br>\n\n\tWindows应用程序是消息驱动的系统或用户让应用程序进行某项操作或完成某个\n\t任务时会发送消息，进入程序的消息队列，然后消息循环会将消息队列中的消息\n\t取出，交予相应的窗口过程处理，此程序的窗口过程函数就是myWndProc函数，\n\t窗口过程函数处理完消息就完成了某项操作或任务。\n\n### MFC应用程序\n\tMFC应用程序根据工程的名称定义了一个全局对象theApp: CMFCApplication1App \n\ttheApp,调用CWinApp和CMFCApplication1App的构造函数后，进入WinMain函数()\n\n## 文件\n- Accelerator 快捷键\n\n\n\n## 相关链接\n[WPF使用](https://docs.microsoft.com/zh-cn/dotnet/framework/wpf/getting-started/introduction-to-wpf-in-vs)\n[MFC基础创建](https://jingyan.baidu.com/article/915fc414fe1ffa51394b2007.html)\n[VS2017+GIT](https://blog.csdn.net/boonya/article/details/78750230)\n[MFC系列编程](http://www.jizhuomi.com/catalog.asp?tags=MFC)"
+toc: false
+date: 2018-04-20 20:47:33
+description:
 ---
 
 ## SDK应用程序和MFC应用程序的对比

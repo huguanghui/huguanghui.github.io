@@ -1,12 +1,11 @@
 ---
 title: Lex和Yacc的入门
 categories:
-  - 语言
+  - 开源代码
 tags:
-  - Lex
-  - Yacc
+  - 软件
 reward: true
-originContent: ''
+originContent: "@[toc]\n\n---\n\n# lex和yacc简介\n\nlex和yacc是自动编译C代码的工具,适合于解析简单语言.这些工具常用于编译器或者解释器的组成部分，或者用于读取配置文件.“lex”和“yacc”这两个名字所代表的也包括这些工具的 GNU 版本 flex 和 bison. lex 和 yacc 是一对配对工具。lex 将文件分解为成组的“记号（tokens）”，大体上类似于单词。yacc 接受 成组的记号，并将它们装配为高层次的结构，类似于句子。yacc 设计用来处理 lex 的输出，不过您也可以 编写自己的代码来完成此任务。同样，lex 的输出很大程度上设计用于为某类解析器提供数据。\n\n# lex使用\n[Lex语法分析](http://www.kuqin.com/shuoit/20160526/352209.html)\n# yacc使用\n\n# 实例应用\n使用的是linux系统下的flex和bison,它们是lex和yacc的加强版.\ncalculator.l的源码\n\n```cpp\n%{  \n#include <stdio.h>  \n#include \"y.tab.h\"  \n  \nint  \nyywrap(void)  \n{  \n    return 1;  \n}  \n%}  \n%%  \n\"+\"             return ADD;  \n\"-\"             return SUB;  \n\"*\"             return MUL;  \n\"/\"             return DIV;  \n\"\\n\"            return CR;  \n([1-9][0-9]*)|0|([0-9]+\\.[0-9]*) {  \n    double temp;  \n    sscanf(yytext, \"%lf\", &temp);  \n    yylval.double_value = temp;  \n    return DOUBLE_LITERAL;  \n}  \n[ \\t] ;  \n. {  \n    fprintf(stderr, \"lexical error.\\n\");  \n    exit(1);  \n}  \n%%\n```\ncalculator.y源码\n```cpp\n%{  \n#include<stdio.h>  \n#include<stdlib.h>  \n#define YYDEBUG 1  \n%}  \n%union {  \nint int_value;  \ndouble double_value;  \n}  \n%token <double_value> DOUBLE_LITERAL  \n%token ADD SUB MUL DIV CR  \n%type <double_value> expression term primary_expression  \n%%  \nline_list  \n    : line  \n    | line_list line  \n    ;  \nline  \n    : expression CR  \n    {  \n        printf(\">>%lf\\n\",$1);  \n    }  \nexpression  \n    : term  \n    | expression ADD term  \n    {  \n        $$=$1+$3;  \n    }  \n    | expression SUB term  \n    {  \n        $$=$1-$3;  \n    }  \n    ;  \nterm  \n    : primary_expression  \n    | term MUL primary_expression  \n    {  \n        $$=$1*$3;  \n    }  \n    | term DIV primary_expression  \n    {  \n        $$=$1/$3;  \n    }  \n    ;  \nprimary_expression  \n    : DOUBLE_LITERAL  \n    ;  \n%%  \nint  \nyyerror(char const *str)  \n{  \n    extern char *yytext;  \n    fprintf(stderr,\"parser error near %s\\n\",yytext);  \n    return 0;  \n}  \nint main(void)  \n{  \n    extern int yyparse(void);  \n    extern FILE *yyin;  \n      \n    yyin=stdin;  \n    if(yyparse()){  \n        fprintf(stderr,\"Error! Error! Error!\\n\");  \n        exit(1);  \n    }  \n}\n```\n\n\t操作命令\n\t$bison -ydv calculator.y\n\t$flex calculator.l\n\t$gcc -o calc y.tab.c lex.yy.c"
 toc: false
 date: 2019-01-25 08:04:17
 description:

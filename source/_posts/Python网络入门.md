@@ -1,7 +1,7 @@
 ---
 title: Python网络入门
 categories:
-  - Python
+  - 操作系统
 tags:
   - 网络
 reward: true

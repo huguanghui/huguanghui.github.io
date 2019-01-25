@@ -1,9 +1,9 @@
 ---
 title: Go语言项目Beego的学习
 categories:
-  - Go使用
+  - Go
 tags:
-  - beego
+  - 软件
 reward: true
 originContent: |-
   @[TOC]

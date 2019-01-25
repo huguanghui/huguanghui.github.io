@@ -1,11 +1,14 @@
 ---
 title: SourceTree的使用
-date: 2018-04-20 05:40:27
 categories:
-- GIT
+  - 版本管理
 tags:
-- 版本管理
-- GitFlow
+  - 工具
+reward: true
+originContent: '[博客推荐](https://www.cnblogs.com/tian-xie/p/6264104.html)'
+toc: false
+date: 2018-04-20 05:40:27
+description:
 ---
 
 [博客推荐](https://www.cnblogs.com/tian-xie/p/6264104.html)

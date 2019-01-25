@@ -3,7 +3,7 @@ title: Mac使用
 categories:
   - 操作系统
 tags:
-  - Mac
+  - 软件
 reward: true
 originContent: >-
   @[TOC]

@@ -1,10 +1,9 @@
 ---
 title: Strace使用
 categories:
-  - Linux
   - 调试
 tags:
-  - 系统调用跟踪
+  - 软件
 reward: true
 originContent: >-
   @[TOC]
@@ -105,7 +104,7 @@ originContent: >-
 
   4.编译 make CFLAGS+="-static"
 
-  5.strip arm_v5t_le-strip 
+  5.strip arm_v5t_le-strip
 toc: false
 date: 2019-01-25 07:58:52
 description:
@@ -164,4 +163,4 @@ $ strace -Tfe strace=open,read,write ./program
 2.解压，对于ARM平台，需要打补丁,暂时没有遇见过
 3.配置 ./configure --host=arm-linux CC=arm_v5t_le-gcc LD=arm_v5t_le-ld
 4.编译 make CFLAGS+="-static"
-5.strip arm_v5t_le-strip 
+5.strip arm_v5t_le-strip
