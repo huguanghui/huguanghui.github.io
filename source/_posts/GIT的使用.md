@@ -575,6 +575,82 @@ originContent: >-
   ---
 
 
+  ## submodule使用
+
+
+  ### 查看子模块的状态
+
+
+  ```shell
+
+  $git submodule 或 git submodule status
+
+  ```
+
+
+  ### 添加子模块
+
+
+  ```shell
+
+  $git submodule add git@github.com:name/*.git subpath
+
+  ```
+
+
+  ### 删除子模块
+
+
+  ```shell
+
+  // 1.删除.gitmodules中需要删除的模块
+
+  // 2.删除目录
+
+  $git rm --cached subpath
+
+  ```
+
+
+  ### 克隆带子模块的工程
+
+
+  ```shell
+
+  // 方法一
+
+  $git clone git@github.com:name/*.git
+
+  $git submodule init
+
+  $git submodule update
+
+  // 方法二
+
+  $git clone --recurse-submodules git@github.com:name/*.git
+
+  ```
+
+
+  ### 更新子模块
+
+
+  ```shell
+
+  // 1.更新所有子模块到最新版本
+
+  $git submodule update --remote
+
+  // 2.更新指定子模块到最新版本
+
+  $git submodule update --remote <submodule-name>
+
+  ```
+
+
+  ---
+
+
   ## 撤销
 
 
@@ -1086,6 +1162,55 @@ git remote -v
 ```shell
 git remote show [remote]
 ```
+
+---
+
+## submodule使用
+
+### 查看子模块的状态
+
+```shell
+$git submodule 或 git submodule status
+```
+
+### 添加子模块
+
+```shell
+$git submodule add git@github.com:name/*.git subpath
+```
+
+### 删除子模块
+
+```shell
+// 1.删除.gitmodules中需要删除的模块
+// 2.删除目录
+$git rm --cached subpath
+```
+
+### 克隆带子模块的工程
+
+```shell
+// 方法一
+$git clone git@github.com:name/*.git
+$git submodule init
+$git submodule update
+// 方法二
+$git clone --recurse-submodules git@github.com:name/*.git
+```
+
+### 更新子模块
+
+```shell
+// 1.更新所有子模块到最新版本
+$git submodule update --remote
+// 2.更新指定子模块到最新版本
+$git submodule update --remote <submodule-name>
+```
+版本
+abc:
+1ec9eef
+coder:
+30bf97f
 
 ---
 
