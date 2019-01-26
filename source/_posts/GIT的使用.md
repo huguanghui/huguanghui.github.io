@@ -645,8 +645,55 @@ originContent: >-
 
   $git submodule update --remote <submodule-name>
 
+  // 3.提交子模块的依赖
+
+  $git add *
+
+  $git commit -m "refresh"
+
+  $git push
+
   ```
 
+
+  ### 环境配置
+
+
+  推荐子模块单独维护
+
+
+  ```shell
+
+  // .gitmodules
+
+  [submodule "abc"]
+    path = abc
+    url = git@github.com:huguanghui/cplusplus.git
+    ignore = dirty/untracked/all
+  ```
+
+
+  版本
+
+  abc:
+
+  1ec9eef
+
+  coder:
+
+  30bf97f
+
+
+  latest
+
+  coder 
+
+  65895b6
+
+  abc:
+
+  43e0804 
+   
 
   ---
 
@@ -1205,12 +1252,23 @@ $git clone --recurse-submodules git@github.com:name/*.git
 $git submodule update --remote
 // 2.更新指定子模块到最新版本
 $git submodule update --remote <submodule-name>
+// 3.提交子模块的依赖
+$git add *
+$git commit -m "refresh"
+$git push
 ```
-版本
-abc:
-1ec9eef
-coder:
-30bf97f
+
+### 环境配置
+
+推荐子模块单独维护s
+
+```shell
+// .gitmodules
+[submodule "abc"]
+  path = abc
+  url = git@github.com:huguanghui/cplusplus.git
+  ignore = dirty/untracked/all
+```
 
 ---
 
