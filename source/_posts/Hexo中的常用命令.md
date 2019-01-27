@@ -5,7 +5,7 @@ categories:
 tags:
   - 项目管理
 reward: true
-originContent: |-
+originContent: |
   ## Hexo常用命令
   ```shell
   hexo new "postName" #新建文章
@@ -23,6 +23,9 @@ originContent: |-
   npm install https://github.com/CodeFalling/hexo-asset-image --save
 
   引用 "![logo](src/log.jpg)"
+
+
+  ## 利用TravisCI实现文档提交的自动部署
 toc: false
 date: 2018-04-15 16:48:33
 description:
@@ -45,3 +48,6 @@ hexo version  #查看Hexo的版本
 npm install https://github.com/CodeFalling/hexo-asset-image --save
 
 引用 "![logo](src/log.jpg)"
+
+
+## 利用TravisCI实现文档提交的自动部署
