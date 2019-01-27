@@ -1,3 +1,4 @@
+
 [submodule "themes/pure"]
 	path = themes/pure
-	url = git@github.com:huguanghui/hexo-theme-pure.git
+	url = https://github.com/huguanghui/hexo-theme-pure.git
