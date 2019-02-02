@@ -1,8 +1,11 @@
 ---
-title: about
-reward: true
-date: 2018-10-14 21:49:31
+title: 关于
 description:
-categories:
-tags:
+layout: about
+comments: true
+sidebar: custom
 ---
+
+```markdown
+渡劫中的IT工程师
+```

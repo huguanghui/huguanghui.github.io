@@ -6,9 +6,7 @@ tags:
   - Go语言
 reward: true
 originContent: |-
-  [TOC]
-
-
+  # Go环境搭建
 
   ## 安装
 
@@ -54,11 +52,39 @@ originContent: |-
 
   ```
 
-
-
   ### go之旅
 
   go官网上的一个Go编程指引功能
+
+  #### 安装远程包
+
+  ```go
+  $ go get github.com/golang/example/hello
+  ```
+
+  #### govendor包管理工具
+
+  ```shell
+  // 1.安装
+  go get -u -v github.com/kardianos/govendor
+  // 2.初始化
+  cd project_dir
+  govendor init
+  govendor add +external
+  // 3.下载
+  govendor fetch 下载自身包和依赖包
+  govendor get 下载自身包
+  govendor add 从本地加载依赖包
+  // 4.安装依赖包
+  govendor sync
+  ```
+
+  .gitignore文件过滤条件
+
+  ```txt
+  /vendor/
+  !/vendor/vendor.json
+  ```
 
   ### 如何去写Go代码
 
@@ -146,9 +172,7 @@ date: 2018-12-13 21:53:35
 description:
 ---
 
-[TOC]
-
-
+# Go环境搭建
 
 ## 安装
 
@@ -194,11 +218,39 @@ export PATH=$PATH:$GOPATH/bin
 
 ```
 
-
-
 ### go之旅
 
 go官网上的一个Go编程指引功能
+
+#### 安装远程包
+
+```go
+$ go get github.com/golang/example/hello
+```
+
+#### govendor包管理工具
+
+```shell
+// 1.安装
+go get -u -v github.com/kardianos/govendor
+// 2.初始化
+cd project_dir
+govendor init
+govendor add +external
+// 3.下载
+govendor fetch 下载自身包和依赖包
+govendor get 下载自身包
+govendor add 从本地加载依赖包
+// 4.安装依赖包
+govendor sync
+```
+
+.gitignore文件过滤条件
+
+```txt
+/vendor/
+!/vendor/vendor.json
+```
 
 ### 如何去写Go代码
 
