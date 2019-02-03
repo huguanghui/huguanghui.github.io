@@ -5,7 +5,7 @@ categories:
 tags:
   - 项目管理
 reward: true
-originContent: |
+originContent: |+
   ## Hexo常用命令
   ```shell
   hexo new "postName" #新建文章
@@ -22,10 +22,49 @@ originContent: |
 
   npm install https://github.com/CodeFalling/hexo-asset-image --save
 
-  引用 "![logo](src/log.jpg)"
-
 
   ## 利用TravisCI实现文档提交的自动部署
+
+  ```yml
+  # 指定语言为node_js, nodejs版本stable
+  language: node_js
+  node_js: stable
+
+  # 指定构建的分支
+  branches:
+    only:
+      - code
+
+  # 制定node_modules缓存
+  cache:
+    directories:
+      - node_modules
+
+  # 构建之前安装hexo-cli
+  before_install:
+    - npm install -g hexo-cli
+
+  # 安装依赖
+  install:
+   - npm install
+
+  # 执行脚本
+  script:
+    - hexo clean
+    - hexo generate
+
+  # 上面的脚本执行成功之后执行deploy
+  after_success:
+    - git init
+    - git config --global user.name "huguanghui"
+    - git config --global user.email "522146829@qq.com"
+    # 替换同目录下_config.yml文件中的GH_TOKEN字符串为travis后台配置的GH_TOKEN
+    - sed -i "s/GH_TOKEN/${GH_TOKEN}/g" ./_config.yml
+    - hexo deploy
+  ```
+
+  ## hexo插件安装
+
 toc: false
 date: 2018-04-15 16:48:33
 description:
@@ -47,7 +86,46 @@ hexo version  #查看Hexo的版本
 
 npm install https://github.com/CodeFalling/hexo-asset-image --save
 
-引用 "![logo](src/log.jpg)"
-
 
 ## 利用TravisCI实现文档提交的自动部署
+
+```yml
+# 指定语言为node_js, nodejs版本stable
+language: node_js
+node_js: stable
+
+# 指定构建的分支
+branches:
+  only:
+    - code
+
+# 制定node_modules缓存
+cache:
+  directories:
+    - node_modules
+
+# 构建之前安装hexo-cli
+before_install:
+  - npm install -g hexo-cli
+
+# 安装依赖
+install:
+ - npm install
+
+# 执行脚本
+script:
+  - hexo clean
+  - hexo generate
+
+# 上面的脚本执行成功之后执行deploy
+after_success:
+  - git init
+  - git config --global user.name "huguanghui"
+  - git config --global user.email "522146829@qq.com"
+  # 替换同目录下_config.yml文件中的GH_TOKEN字符串为travis后台配置的GH_TOKEN
+  - sed -i "s/GH_TOKEN/${GH_TOKEN}/g" ./_config.yml
+  - hexo deploy
+```
+
+## hexo插件安装
+
