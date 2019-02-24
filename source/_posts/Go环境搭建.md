@@ -12,8 +12,6 @@ originContent: |-
 
   ## 学习
 
-  2018-12-13号开始学习.
-
   区块链
 
   云服务和云存储
@@ -86,6 +84,29 @@ originContent: |-
   !/vendor/vendor.json
   ```
 
+  #### .editorconfig配置
+
+  ```code
+  # http://editorconfig.org
+
+  root = true
+
+  [*]
+  charset = utf-8
+  end_of_line = lf
+  insert_final_newline = true
+  trim_trailing_whitespace = true
+
+  [*.go]
+  indent_style = tab
+  indent_size = 4
+
+  [*.yml]
+  indent_style = space
+  indent_size = 2
+
+  ```
+
   ### 如何去写Go代码
 
   #### 编译类型
@@ -129,6 +150,10 @@ originContent: |-
   #### godoc
 
   将代码和文档保持一致.
+
+  ```shell
+  godoc -http=:6060
+  ```
 
   ### 语法文档
 
@@ -177,8 +202,6 @@ description:
 ## 安装
 
 ## 学习
-
-2018-12-13号开始学习.
 
 区块链
 
@@ -252,6 +275,29 @@ govendor sync
 !/vendor/vendor.json
 ```
 
+#### .editorconfig配置
+
+```code
+# http://editorconfig.org
+
+root = true
+
+[*]
+charset = utf-8
+end_of_line = lf
+insert_final_newline = true
+trim_trailing_whitespace = true
+
+[*.go]
+indent_style = tab
+indent_size = 4
+
+[*.yml]
+indent_style = space
+indent_size = 2
+
+```
+
 ### 如何去写Go代码
 
 #### 编译类型
@@ -295,6 +341,10 @@ Go相关的一个共性的问题
 #### godoc
 
 将代码和文档保持一致.
+
+```shell
+godoc -http=:6060
+```
 
 ### 语法文档
 
