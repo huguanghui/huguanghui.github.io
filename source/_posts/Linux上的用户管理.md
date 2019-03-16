@@ -79,3 +79,6 @@ $userdel username
 
 ## useradd和adduser的区别
 > CentOS下两个命令没有区别,在Ubuntu系统下useradd添加用户不会自动设置用户目录和shell版本,userdel和deluser类似.
+
+## root用户添加
+[添加root用户权限](http://www.cnblogs.com/oumi/p/9862211.html)
