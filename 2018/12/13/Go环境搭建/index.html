@@ -1,0 +1,629 @@
+<!DOCTYPE html>
+<html lang=zh>
+<head>
+  <meta charset="utf-8">
+  
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
+  <meta name="renderer" content="webkit">
+  <meta http-equiv="Cache-Control" content="no-transform" />
+  <meta http-equiv="Cache-Control" content="no-siteapp" />
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <meta name="format-detection" content="telephone=no,email=no,adress=no">
+  <!-- Color theme for statusbar -->
+  <meta name="theme-color" content="#000000" />
+  <!-- 强制页面在当前窗口以独立页面显示,防止别人在框架里调用页面 -->
+  <meta http-equiv="window-target" content="_top" />
+  
+  
+  <title>Go环境搭建 | Hexo</title>
+  <meta name="description" content="Go环境搭建安装学习区块链 云服务和云存储 大数据开发 源码安装Go在树莓派上编译Go源码，查看编译完成后占用的大小  获取源码  编译源码 由两个Go的编译工具链,一个是gc,另一个是gccgo. Go编译器支持8种指令集.  运行Demo   linux和Mac环境部署go的root包存放目录 /usr/local 在/etc/profile种添加PATH,GOROOT,GOPATH路径指定">
+<meta name="keywords" content="Go语言">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Go环境搭建">
+<meta property="og:url" content="http://yoursite.com/2018/12/13/Go环境搭建/index.html">
+<meta property="og:site_name" content="光辉岁月">
+<meta property="og:description" content="Go环境搭建安装学习区块链 云服务和云存储 大数据开发 源码安装Go在树莓派上编译Go源码，查看编译完成后占用的大小  获取源码  编译源码 由两个Go的编译工具链,一个是gc,另一个是gccgo. Go编译器支持8种指令集.  运行Demo   linux和Mac环境部署go的root包存放目录 /usr/local 在/etc/profile种添加PATH,GOROOT,GOPATH路径指定">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2020-03-27T02:50:32.975Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Go环境搭建">
+<meta name="twitter:description" content="Go环境搭建安装学习区块链 云服务和云存储 大数据开发 源码安装Go在树莓派上编译Go源码，查看编译完成后占用的大小  获取源码  编译源码 由两个Go的编译工具链,一个是gc,另一个是gccgo. Go编译器支持8种指令集.  运行Demo   linux和Mac环境部署go的root包存放目录 /usr/local 在/etc/profile种添加PATH,GOROOT,GOPATH路径指定">
+  <!-- Canonical links -->
+  <link rel="canonical" href="http://yoursite.com/2018/12/13/Go环境搭建/index.html">
+  
+    <link rel="alternate" href="/atom.xml" title="光辉岁月" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png" type="image/x-icon">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  
+  
+  
+  
+</head>
+
+
+<body class="main-center theme-blue" itemscope itemtype="http://schema.org/WebPage">
+  <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+  <div class="slimContent">
+    <div class="navbar-header">
+      
+      
+      <div class="profile-block text-center">
+        <a id="avatar" href="https://github.com/huguanghui" target="_blank">
+          <img class="img-circle img-rotate" src="/images/avatar.jpg" width="200" height="200">
+        </a>
+        <h2 id="name" class="hidden-xs hidden-sm">胡光辉</h2>
+        <h3 id="title" class="hidden-xs hidden-sm hidden-md">软件工程师</h3>
+        <small id="location" class="text-muted hidden-xs hidden-sm"><i class="icon icon-map-marker"></i> Wuhan, China</small>
+      </div>
+      
+      <div class="search" id="search-form-wrap">
+
+    <form class="search-form sidebar-form">
+        <div class="input-group">
+            <input type="text" class="search-form-input form-control" placeholder="搜索" />
+            <span class="input-group-btn">
+                <button type="submit" class="search-form-submit btn btn-flat" onclick="return false;"><i class="icon icon-search"></i></button>
+            </span>
+        </div>
+    </form>
+    <div class="ins-search">
+  <div class="ins-search-mask"></div>
+  <div class="ins-search-container">
+    <div class="ins-input-wrapper">
+      <input type="text" class="ins-search-input" placeholder="想要查找什么..." x-webkit-speech />
+      <button type="button" class="close ins-close ins-selectable" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+    </div>
+    <div class="ins-section-wrapper">
+      <div class="ins-section-container"></div>
+    </div>
+  </div>
+</div>
+
+
+</div>
+      <button class="navbar-toggle collapsed" type="button" data-toggle="collapse" data-target="#main-navbar" aria-controls="main-navbar" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+    </div>
+    <nav id="main-navbar" class="collapse navbar-collapse" itemscope itemtype="http://schema.org/SiteNavigationElement" role="navigation">
+      <ul class="nav navbar-nav main-nav ">
+        
+        
+        <li class="menu-item menu-item-home">
+          <a href="/.">
+            
+            <i class="icon icon-home-fill"></i>
+            
+            <span class="menu-title">首页</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives">
+            
+            <i class="icon icon-archives-fill"></i>
+            
+            <span class="menu-title">归档</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories">
+            
+            <i class="icon icon-folder"></i>
+            
+            <span class="menu-title">分类</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags">
+            
+            <i class="icon icon-tags"></i>
+            
+            <span class="menu-title">标签</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-repository">
+          <a href="/repository">
+            
+            <i class="icon icon-project"></i>
+            
+            <span class="menu-title">项目</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-links">
+          <a href="/links">
+            
+            <i class="icon icon-friendship"></i>
+            
+            <span class="menu-title">友链</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about">
+            
+            <i class="icon icon-cup-fill"></i>
+            
+            <span class="menu-title">关于</span>
+          </a>
+        </li>
+        
+      </ul>
+      
+	
+    <ul class="social-links">
+    	
+        <li><a href="https://github.com/huguanghui" target="_blank" title="Github" data-toggle=tooltip data-placement=top><i class="icon icon-github"></i></a></li>
+        
+        <li><a href="https://weibo.com/guanghuihu" target="_blank" title="Weibo" data-toggle=tooltip data-placement=top><i class="icon icon-weibo"></i></a></li>
+        
+    </ul>
+
+    </nav>
+  </div>
+</header>
+
+  
+    <aside class="sidebar" itemscope itemtype="http://schema.org/WPSideBar">
+  <div class="slimContent">
+    
+      <div class="widget">
+    <h3 class="widget-title">公告</h3>
+    <div class="widget-body">
+        <div id="board">
+            <div class="content">
+                <p>欢迎交流与分享经验!</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">分类</h3>
+    <div class="widget-body">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/CPlusPlus/">CPlusPlus</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Go/">Go</a><span class="category-list-count">6</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Java/">Java</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Linux/">Linux</a><span class="category-list-count">5</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Windows/">Windows</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/书单/">书单</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/前端/">前端</a><span class="category-list-count">13</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/开源代码/">开源代码</a><span class="category-list-count">11</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/操作系统/">操作系统</a><span class="category-list-count">14</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/版本管理/">版本管理</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/调试/">调试</a><span class="category-list-count">5</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/软件使用/">软件使用</a><span class="category-list-count">7</span></li></ul>
+    </div>
+  </div>
+
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">标签</h3>
+    <div class="widget-body">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Bug定位/">Bug定位</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Go语言/">Go语言</a><span class="tag-list-count">6</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Java/">Java</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/bluetooth/">bluetooth</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/c/">c++</a><span class="tag-list-count">7</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/linux/">linux</a><span class="tag-list-count">6</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/node/">node</a><span class="tag-list-count">8</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/python/">python</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/工具/">工具</a><span class="tag-list-count">9</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/性能/">性能</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/理论/">理论</a><span class="tag-list-count">6</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/网络/">网络</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/软件/">软件</a><span class="tag-list-count">24</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/项目管理/">项目管理</a><span class="tag-list-count">11</span></li></ul>
+    </div>
+  </div>
+
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">标签云</h3>
+    <div class="widget-body tagcloud">
+      <a href="/tags/Bug定位/" style="font-size: 13px;">Bug定位</a> <a href="/tags/Go语言/" style="font-size: 13.29px;">Go语言</a> <a href="/tags/Java/" style="font-size: 13.14px;">Java</a> <a href="/tags/bluetooth/" style="font-size: 13px;">bluetooth</a> <a href="/tags/c/" style="font-size: 13.43px;">c++</a> <a href="/tags/linux/" style="font-size: 13.29px;">linux</a> <a href="/tags/node/" style="font-size: 13.57px;">node</a> <a href="/tags/python/" style="font-size: 13px;">python</a> <a href="/tags/工具/" style="font-size: 13.71px;">工具</a> <a href="/tags/性能/" style="font-size: 13px;">性能</a> <a href="/tags/理论/" style="font-size: 13.29px;">理论</a> <a href="/tags/网络/" style="font-size: 13px;">网络</a> <a href="/tags/软件/" style="font-size: 14px;">软件</a> <a href="/tags/项目管理/" style="font-size: 13.86px;">项目管理</a>
+    </div>
+  </div>
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">归档</h3>
+    <div class="widget-body">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/03/">三月 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/02/">二月 2019</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/01/">一月 2019</a><span class="archive-list-count">19</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">十二月 2018</a><span class="archive-list-count">11</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">十一月 2018</a><span class="archive-list-count">25</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">十月 2018</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">五月 2018</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/04/">四月 2018</a><span class="archive-list-count">15</span></li></ul>
+    </div>
+  </div>
+
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget-body">
+      <ul class="recent-post-list list-unstyled no-thumbnail">
+        
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                <a class="category-link" href="/categories/书单/">书单</a>
+              </p>
+              <p class="item-title">
+                <a href="/2019/03/18/编程书单/" class="title">编程书单</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2019-03-18T20:19:36.000Z" itemprop="datePublished">2019-03-18</time>
+              </p>
+            </div>
+          </li>
+          
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                <a class="category-link" href="/categories/操作系统/">操作系统</a>
+              </p>
+              <p class="item-title">
+                <a href="/2019/02/28/Linux上的用户管理/" class="title">Linux上的用户管理</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2019-02-28T01:00:25.000Z" itemprop="datePublished">2019-02-28</time>
+              </p>
+            </div>
+          </li>
+          
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                <a class="category-link" href="/categories/软件使用/">软件使用</a>
+              </p>
+              <p class="item-title">
+                <a href="/2019/02/24/adb命令的使用/" class="title">adb命令的使用</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2019-02-24T23:00:45.000Z" itemprop="datePublished">2019-02-24</time>
+              </p>
+            </div>
+          </li>
+          
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                <a class="category-link" href="/categories/软件使用/">软件使用</a>
+              </p>
+              <p class="item-title">
+                <a href="/2019/02/21/VSCode的插件整理/" class="title">VSCode的插件整理</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2019-02-21T22:23:01.000Z" itemprop="datePublished">2019-02-21</time>
+              </p>
+            </div>
+          </li>
+          
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                <a class="category-link" href="/categories/Go/">Go</a>
+              </p>
+              <p class="item-title">
+                <a href="/2019/02/04/Go中go-test总结/" class="title">Go中go test总结</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2019-02-04T15:39:08.000Z" itemprop="datePublished">2019-02-04</time>
+              </p>
+            </div>
+          </li>
+          
+      </ul>
+    </div>
+  </div>
+  
+
+    
+  </div>
+</aside>
+
+  
+  
+<main class="main" role="main">
+  <div class="content">
+  <article id="post-Go环境搭建" class="article article-type-post" itemscope itemtype="http://schema.org/BlogPosting">
+    
+    <div class="article-header">
+      
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Go环境搭建
+    </h1>
+  
+
+      
+      <div class="article-meta">
+        <span class="article-date">
+    <i class="icon icon-calendar-check"></i>
+	<a href="/2018/12/13/Go环境搭建/" class="article-date">
+	  <time datetime="2018-12-13T21:53:35.000Z" itemprop="datePublished">2018-12-13</time>
+	</a>
+</span>
+        
+  <span class="article-category">
+    <i class="icon icon-folder"></i>
+    <a class="article-category-link" href="/categories/Go/">Go</a>
+  </span>
+
+        
+  <span class="article-tag">
+    <i class="icon icon-tags"></i>
+	<a class="article-tag-link" href="/tags/Go语言/">Go语言</a>
+  </span>
+
+
+        
+
+        <span class="post-comment"><i class="icon icon-comment"></i> <a href="/2018/12/13/Go环境搭建/#comments" class="article-comment-link">评论</a></span>
+        
+      </div>
+    </div>
+    <div class="article-entry marked-body" itemprop="articleBody">
+      
+        <h1 id="Go环境搭建"><a href="#Go环境搭建" class="headerlink" title="Go环境搭建"></a>Go环境搭建</h1><h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><h2 id="学习"><a href="#学习" class="headerlink" title="学习"></a>学习</h2><p>区块链</p>
+<p>云服务和云存储</p>
+<p>大数据开发</p>
+<h3 id="源码安装Go"><a href="#源码安装Go" class="headerlink" title="源码安装Go"></a>源码安装Go</h3><p>在树莓派上编译Go源码，查看编译完成后占用的大小</p>
+<ol>
+<li><p>获取源码</p>
+</li>
+<li><p>编译源码</p>
+<p>由两个Go的编译工具链,一个是gc,另一个是gccgo.</p>
+<p>Go编译器支持8种指令集.</p>
+</li>
+<li><p>运行Demo</p>
+</li>
+</ol>
+<h3 id="linux和Mac环境部署"><a href="#linux和Mac环境部署" class="headerlink" title="linux和Mac环境部署"></a>linux和Mac环境部署</h3><p>go的root包存放目录 /usr/local</p>
+<p>在/etc/profile种添加PATH,GOROOT,GOPATH路径指定</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">export PATH=$PATH:/usr/loca/<span class="keyword">go</span>/bin</span><br><span class="line"></span><br><span class="line">export GOROOT=$(<span class="keyword">go</span> env GOROOT)</span><br><span class="line"></span><br><span class="line">export GOPATH=$(<span class="keyword">go</span> env GOPATH)</span><br><span class="line"></span><br><span class="line">export PATH=$PATH:$GOPATH/bin</span><br></pre></td></tr></table></figure>
+<h3 id="go之旅"><a href="#go之旅" class="headerlink" title="go之旅"></a>go之旅</h3><p>go官网上的一个Go编程指引功能</p>
+<h4 id="安装远程包"><a href="#安装远程包" class="headerlink" title="安装远程包"></a>安装远程包</h4><figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ <span class="keyword">go</span> get github.com/golang/example/hello</span><br></pre></td></tr></table></figure>
+<h4 id="govendor包管理工具"><a href="#govendor包管理工具" class="headerlink" title="govendor包管理工具"></a>govendor包管理工具</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">// 1.安装</span><br><span class="line">go get -u -v github.com/kardianos/govendor</span><br><span class="line">// 2.初始化</span><br><span class="line">cd project_dir</span><br><span class="line">govendor init</span><br><span class="line">govendor add +external</span><br><span class="line">// 3.下载</span><br><span class="line">govendor fetch 下载自身包和依赖包</span><br><span class="line">govendor get 下载自身包</span><br><span class="line">govendor add 从本地加载依赖包</span><br><span class="line">// 4.安装依赖包</span><br><span class="line">govendor sync</span><br></pre></td></tr></table></figure>
+<p>.gitignore文件过滤条件</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">/vendor/</span><br><span class="line">!/vendor/vendor.json</span><br></pre></td></tr></table></figure>
+<h4 id="editorconfig配置"><a href="#editorconfig配置" class="headerlink" title=".editorconfig配置"></a>.editorconfig配置</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"># http://editorconfig.org</span><br><span class="line"></span><br><span class="line">root = true</span><br><span class="line"></span><br><span class="line">[*]</span><br><span class="line">charset = utf-8</span><br><span class="line">end_of_line = lf</span><br><span class="line">insert_final_newline = true</span><br><span class="line">trim_trailing_whitespace = true</span><br><span class="line"></span><br><span class="line">[*.go]</span><br><span class="line">indent_style = tab</span><br><span class="line">indent_size = 4</span><br><span class="line"></span><br><span class="line">[*.yml]</span><br><span class="line">indent_style = space</span><br><span class="line">indent_size = 2</span><br></pre></td></tr></table></figure>
+<h3 id="如何去写Go代码"><a href="#如何去写Go代码" class="headerlink" title="如何去写Go代码"></a>如何去写Go代码</h3><h4 id="编译类型"><a href="#编译类型" class="headerlink" title="编译类型"></a>编译类型</h4><p>取消调试信息</p>
+<p>go build -ldflags “-w” prog.go</p>
+<p>go编译器生成的代码包含内联函数调用和注册变量</p>
+<p>在调试的时候需要关掉它们</p>
+<p>go build -gcflags “-N -l”</p>
+<h3 id="编辑器和IDE工具"><a href="#编辑器和IDE工具" class="headerlink" title="编辑器和IDE工具"></a>编辑器和IDE工具</h3><p>LiteIDE</p>
+<p>VSCode</p>
+<h3 id="高效Go"><a href="#高效Go" class="headerlink" title="高效Go"></a>高效Go</h3><h3 id="诊断"><a href="#诊断" class="headerlink" title="诊断"></a>诊断</h3><p>使用gdb调试Go</p>
+<h3 id="FAQ"><a href="#FAQ" class="headerlink" title="FAQ"></a>FAQ</h3><p>Go相关的一个共性的问题</p>
+<h3 id="其他资源"><a href="#其他资源" class="headerlink" title="其他资源"></a>其他资源</h3><h2 id="参考文档"><a href="#参考文档" class="headerlink" title="参考文档"></a>参考文档</h2><h3 id="包文档"><a href="#包文档" class="headerlink" title="包文档"></a>包文档</h3><p>以包的形式划分模块.</p>
+<h3 id="命令文档"><a href="#命令文档" class="headerlink" title="命令文档"></a>命令文档</h3><h4 id="godoc"><a href="#godoc" class="headerlink" title="godoc"></a>godoc</h4><p>将代码和文档保持一致.</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">godoc -http=:6060</span><br></pre></td></tr></table></figure>
+<h3 id="语法文档"><a href="#语法文档" class="headerlink" title="语法文档"></a>语法文档</h3><h4 id="Go的特性"><a href="#Go的特性" class="headerlink" title="Go的特性"></a>Go的特性</h4><h5 id="切片"><a href="#切片" class="headerlink" title="切片"></a>切片</h5><p>入门:</p>
+<p>切片是对数组的一个升级,每个切片的元素都是不定长的,同时可以插入.</p>
+<h5 id="Map"><a href="#Map" class="headerlink" title="Map"></a>Map</h5><p>Map是一个类型变量的无序集合.</p>
+<h5 id="Interface"><a href="#Interface" class="headerlink" title="Interface"></a>Interface</h5><p>把所有共性的方法定义在一起,任何其他类型只要实现这些方法就是实现这个接口.</p>
+<h5 id="Channel"><a href="#Channel" class="headerlink" title="Channel"></a>Channel</h5><p>用于goroutine上的通信.</p>
+<h5 id="并发"><a href="#并发" class="headerlink" title="并发"></a>并发</h5><p>goroutine轻量级线程,与内核中的线程不是一个东西.</p>
+<p>goroutine的实现机制值得研究一下.</p>
+<h3 id="Go的内存模型"><a href="#Go的内存模型" class="headerlink" title="Go的内存模型"></a>Go的内存模型</h3><h3 id="稳定版本的历史记录"><a href="#稳定版本的历史记录" class="headerlink" title="稳定版本的历史记录"></a>稳定版本的历史记录</h3><h2 id="文章"><a href="#文章" class="headerlink" title="文章"></a>文章</h2><h3 id="Go的Blog"><a href="#Go的Blog" class="headerlink" title="Go的Blog"></a>Go的Blog</h3><h2 id="话题"><a href="#话题" class="headerlink" title="话题"></a>话题</h2>
+      
+    </div>
+    <div class="article-footer">
+      <blockquote class="mt-2x">
+  <ul class="post-copyright list-unstyled">
+    
+    <li class="post-copyright-link hidden-xs">
+      <strong>本文链接：</strong>
+      <a href="http://yoursite.com/2018/12/13/Go环境搭建/" title="Go环境搭建" target="_blank" rel="external">http://yoursite.com/2018/12/13/Go环境搭建/</a>
+    </li>
+    
+    <li class="post-copyright-license">
+      <strong>版权声明： </strong> 本博客所有文章除特别声明外，均采用 <a href="http://creativecommons.org/licenses/by/4.0/deed.zh" target="_blank" rel="external">CC BY 4.0 CN协议</a> 许可协议。转载请注明出处！
+    </li>
+  </ul>
+</blockquote>
+
+
+<div class="panel panel-default panel-badger">
+  <div class="panel-body">
+    <figure class="media">
+      <div class="media-left">
+        <a href="https://github.com/huguanghui" target="_blank" class="img-burn thumb-sm visible-lg">
+          <img src="/images/avatar.jpg" class="img-rounded w-full" alt="">
+        </a>
+      </div>
+      <div class="media-body">
+        <h3 class="media-heading"><a href="https://github.com/huguanghui" target="_blank"><span class="text-dark">胡光辉</span><small class="ml-1x">软件工程师</small></a></h3>
+        <div>个人简介。</div>
+      </div>
+    </figure>
+  </div>
+</div>
+
+
+    </div>
+  </article>
+  
+    
+  <section id="comments">
+  	
+      <div id="vcomments"></div>
+    
+  </section>
+
+
+  
+</div>
+
+  <nav class="bar bar-footer clearfix" data-stick-bottom>
+  <div class="bar-inner">
+  
+  <ul class="pager pull-left">
+    
+    <li class="prev">
+      <a href="/2018/12/19/Go的学习进度/" title="Go的学习进度"><i class="icon icon-angle-left" aria-hidden="true"></i><span>&nbsp;&nbsp;上一篇</span></a>
+    </li>
+    
+    
+    <li class="next">
+      <a href="/2018/12/12/kernel学习/" title="kernel学习"><span>下一篇&nbsp;&nbsp;</span><i class="icon icon-angle-right" aria-hidden="true"></i></a>
+    </li>
+    
+    
+  </ul>
+  
+  
+  <!-- Button trigger modal -->
+  <button type="button" class="btn btn-fancy btn-donate pop-onhover bg-gradient-warning" data-toggle="modal" data-target="#donateModal"><span>赏</span></button>
+  <!-- <div class="wave-icon wave-icon-danger btn-donate" data-toggle="modal" data-target="#donateModal">
+    <div class="wave-circle"><span class="icon"><i class="icon icon-bill"></i></span></div>
+  </div> -->
+  
+  
+  <div class="bar-right">
+    
+    <div class="share-component" data-sites="weibo,qq,wechat,facebook,twitter" data-mobile-sites="weibo,qq,qzone"></div>
+    
+  </div>
+  </div>
+</nav>
+  
+<!-- Modal -->
+<div class="modal modal-center modal-small modal-xs-full fade" id="donateModal" tabindex="-1" role="dialog">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content donate">
+      <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+      <div class="modal-body">
+        <div class="donate-box">
+          <div class="donate-head">
+            <p>感谢您的支持，我会继续努力的!</p>
+          </div>
+          <div class="tab-content">
+            <div role="tabpanel" class="tab-pane fade active in" id="alipay">
+              <div class="donate-payimg">
+                <img src="/images/donate/alipayimg.jpg" alt="扫码支持" title="扫一扫" />
+              </div>
+              <p class="text-muted mv">扫码打赏，你说多少就多少</p>
+              <p class="text-grey">打开支付宝扫一扫，即可进行扫码打赏哦</p>
+            </div>
+            <div role="tabpanel" class="tab-pane fade" id="wechatpay">
+              <div class="donate-payimg">
+                <img src="/images/donate/wechatimg.jpg" alt="扫码支持" title="扫一扫" />
+              </div>
+              <p class="text-muted mv">扫码打赏，你说多少就多少</p>
+              <p class="text-grey">打开微信扫一扫，即可进行扫码打赏哦</p>
+            </div>
+          </div>
+          <div class="donate-footer">
+            <ul class="nav nav-tabs nav-justified" role="tablist">
+              <li role="presentation" class="active">
+                <a href="#alipay" id="alipay-tab" role="tab" data-toggle="tab" aria-controls="alipay" aria-expanded="true"><i class="icon icon-alipay"></i> 支付宝</a>
+              </li>
+              <li role="presentation" class="">
+                <a href="#wechatpay" role="tab" id="wechatpay-tab" data-toggle="tab" aria-controls="wechatpay" aria-expanded="false"><i class="icon icon-wepay"></i> 微信支付</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+</main>
+
+  <footer class="footer" itemscope itemtype="http://schema.org/WPFooter">
+	
+	
+    <ul class="social-links">
+    	
+        <li><a href="https://github.com/huguanghui" target="_blank" title="Github" data-toggle=tooltip data-placement=top><i class="icon icon-github"></i></a></li>
+        
+        <li><a href="https://weibo.com/guanghuihu" target="_blank" title="Weibo" data-toggle=tooltip data-placement=top><i class="icon icon-weibo"></i></a></li>
+        
+    </ul>
+
+    <div class="copyright">
+    	
+        <div class="publishby">
+        	Theme by <a href="https://github.com/cofess" target="_blank"> cofess </a>base on <a href="https://github.com/cofess/hexo-theme-pure" target="_blank">pure</a>.
+        </div>
+    </div>
+</footer>
+  <script src="//cdn.jsdelivr.net/npm/jquery@1.12.4/dist/jquery.min.js"></script>
+<script>
+window.jQuery || document.write('<script src="js/jquery.min.js"><\/script>')
+</script>
+<script src="/js/plugin.min.js"></script>
+<script src="/js/application.js"></script>
+
+    <script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: '文章',
+            PAGES: '页面',
+            CATEGORIES: '分类',
+            TAGS: '标签',
+            UNTITLED: '(未命名)',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+<script src="/js/insight.js"></script>
+
+
+
+
+
+   
+
+
+
+
+   
+    
+  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/valine"></script>
+  <script type="text/javascript">
+  var GUEST = ['nick', 'mail', 'link'];
+  var meta = 'nick,mail,link';
+  meta = meta.split(',').filter(function(item) {
+    return GUEST.indexOf(item) > -1;
+  });
+  new Valine({
+    el: '#vcomments',
+    verify: false,
+    notify: false,
+    appId: '',
+    appKey: '',
+    placeholder: 'Just go go',
+    avatar: 'mm',
+    meta: meta,
+    pageSize: '10' || 10,
+    visitor: false
+  });
+  </script>
+
+     
+
+
+
+
+
+
+
+</body>
+</html>
